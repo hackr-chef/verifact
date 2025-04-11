@@ -15,12 +15,16 @@ export async function GET(request: NextRequest) {
       {
         cookies: {
           get(name: string) {
-            return cookieStore.get(name)?.value;
+            // Handle cookies() returning a ReadonlyRequestCookies object
+            const cookie = cookieStore.get(name);
+            return cookie?.value;
           },
           set(name: string, value: string, options: any) {
+            // Set cookie with the correct interface
             cookieStore.set({ name, value, ...options });
           },
           remove(name: string, options: any) {
+            // Remove cookie by setting an empty value
             cookieStore.set({ name, value: '', ...options });
           },
         },

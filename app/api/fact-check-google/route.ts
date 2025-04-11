@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const claims = sentences.slice(0, Math.min(5, sentences.length));
 
     // For each claim, perform a fact check
-    const factCheckResults = claims.map((claim, index) => {
+    const factCheckResults = claims.map((claim, _index) => {
       // First, check against our knowledge base for verified facts
       const knowledgeBaseResult = verifyFactWithKnowledgeBase(claim.trim());
 

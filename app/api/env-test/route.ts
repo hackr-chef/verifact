@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   // Return environment variable information (without revealing the full keys)
   return new Response(
     JSON.stringify({

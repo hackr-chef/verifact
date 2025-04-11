@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+// import { useState } from "react";
 import SignOutButton from "@/components/auth/sign-out-button";
 
 export default function ResultsPage() {

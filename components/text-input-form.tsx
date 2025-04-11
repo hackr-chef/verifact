@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 interface TextInputFormProps {
   onSubmit: (text: string, file: File | null) => void;
@@ -53,7 +53,7 @@ export default function TextInputForm({
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (e.type === 'dragenter' || e.type === 'dragover') {
       setDragActive(true);
     } else if (e.type === 'dragleave') {
@@ -65,7 +65,7 @@ export default function TextInputForm({
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    
+
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       const droppedFile = e.dataTransfer.files[0];
       setFile(droppedFile);
@@ -93,13 +93,13 @@ export default function TextInputForm({
         <p className="mb-6 text-sm" style={{ color: colors.text }}>
           Enter your text below and we'll analyze it for factual accuracy, providing detailed feedback on what's accurate and what needs correction.
         </p>
-        
+
         {/* Text Area */}
         <div
           className={`relative border-2 border-dashed rounded-lg transition-colors ${
             dragActive ? 'border-primary' : 'border-gray-200'
           }`}
-          style={{ 
+          style={{
             borderColor: dragActive ? colors.primary : colors.border,
             background: dragActive ? colors.primaryLight : 'white'
           }}
@@ -110,7 +110,7 @@ export default function TextInputForm({
         >
           <textarea
             className="w-full h-64 p-4 rounded-lg outline-none resize-none bg-transparent"
-            style={{ 
+            style={{
               color: colors.text,
               caretColor: colors.primary
             }}
@@ -118,7 +118,7 @@ export default function TextInputForm({
             value={text}
             onChange={handleTextChange}
           ></textarea>
-          
+
           {dragActive && (
             <div className="absolute inset-0 flex items-center justify-center rounded-lg">
               <div style={{ color: colors.primary }} className="font-medium">
@@ -126,11 +126,11 @@ export default function TextInputForm({
               </div>
             </div>
           )}
-          
+
           <div className="flex justify-between text-xs px-4 pb-2" style={{ color: colors.lightText }}>
             <span>{charCount} / {maxLength} characters</span>
-            <span>Drag & drop a file or <button 
-              type="button" 
+            <span>Drag & drop a file or <button
+              type="button"
               style={{ color: colors.primary }}
               className="hover:underline"
               onClick={() => fileInputRef.current?.click()}
@@ -146,13 +146,13 @@ export default function TextInputForm({
             />
           </div>
         </div>
-        
+
         {/* File Preview */}
         {file && (
-          <div className="mt-3 p-3 rounded-md flex items-center justify-between" 
+          <div className="mt-3 p-3 rounded-md flex items-center justify-between"
                style={{ background: colors.primaryLight }}>
             <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" 
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2"
                    style={{ color: colors.primary }} viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
               </svg>
@@ -170,7 +170,7 @@ export default function TextInputForm({
             </button>
           </div>
         )}
-        
+
         {/* Controls */}
         <div className="mt-6 flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
           <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6">
@@ -184,7 +184,7 @@ export default function TextInputForm({
                     className={`flex-1 h-6 rounded-full text-xs font-medium flex items-center justify-center transition-all ${
                       tone === 'friendly' ? 'shadow' : ''
                     }`}
-                    style={{ 
+                    style={{
                       background: tone === 'friendly' ? 'white' : 'transparent',
                       color: tone === 'friendly' ? colors.primary : colors.lightText
                     }}
@@ -197,7 +197,7 @@ export default function TextInputForm({
                     className={`flex-1 h-6 rounded-full text-xs font-medium flex items-center justify-center transition-all ${
                       tone === 'critical' ? 'shadow' : ''
                     }`}
-                    style={{ 
+                    style={{
                       background: tone === 'critical' ? 'white' : 'transparent',
                       color: tone === 'critical' ? colors.primary : colors.lightText
                     }}
@@ -208,13 +208,13 @@ export default function TextInputForm({
                 </div>
               </div>
             </div>
-            
+
             {/* Format Toggle */}
             <div className="flex items-center space-x-2">
               <span className="text-sm font-medium" style={{ color: colors.lightText }}>Format:</span>
               <select
                 className="h-8 pl-3 pr-8 text-sm border rounded-md outline-none bg-white"
-                style={{ 
+                style={{
                   color: colors.text,
                   borderColor: colors.border
                 }}
@@ -228,7 +228,7 @@ export default function TextInputForm({
               </select>
             </div>
           </div>
-          
+
           {/* Check Button */}
           <button
             type="submit"
@@ -238,7 +238,7 @@ export default function TextInputForm({
                 ? 'cursor-not-allowed opacity-70'
                 : 'hover:opacity-90'
             }`}
-            style={{ 
+            style={{
               background: colors.primary,
               color: 'white'
             }}
