@@ -14,6 +14,15 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  // Fix for punycode deprecation warning
+  webpack: (config, { isServer, dev }) => {
+    // This is to suppress the punycode deprecation warning
+    config.ignoreWarnings = [
+      { module: /node_modules\/punycode/ },
+    ];
+
+    return config;
+  },
 };
 
 module.exports = nextConfig;
