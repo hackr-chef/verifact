@@ -1,26 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Primary Palette */
+  --background: #F8FAFC; /* Soft Light Grayish-White */
+  --primary-accent: #3B82F6; /* Sky Blue – trust & tech-forward */
+  --secondary-accent: #0F172A; /* Deep Navy – authority & contrast */
+  --highlight-color: #22C55E; /* Fresh Green – for verified truths */
+  --warning-color: #F59E0B; /* Amber – for partial truths */
+  --error-color: #EF4444; /* Red – for misleading or false claims */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Text Colors */
+  --text-header: #0F172A; /* Deep Navy - Headers / Titles */
+  --text-subtitle: #475569; /* Slate Gray - Subtitles / Section Labels */
+  --text-body: #334155; /* Cool Gray - Body Text */
+  --text-true: #22C55E; /* Green - Fact Result – TRUE */
+  --text-false: #EF4444; /* Red - Fact Result – FALSE */
+  --text-mixed: #F59E0B; /* Amber - Fact Result – MIXED */
+  --text-tips: #3B82F6; /* Sky Blue - Tips / Advice / Suggestions */
+  --text-meta: #64748B; /* Muted Gray - Timestamps / Sources */
+  --text-input: #1E293B; /* Very Dark Gray - Input Field Text */
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--text-body);
   font-family: Arial, Helvetica, sans-serif;
 }
