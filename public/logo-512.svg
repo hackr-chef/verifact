@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="64" fill="#3B82F6"/>
+  <!-- Using paths instead of text for better compatibility -->
+  <!-- V letter -->
+  <path d="M168 160L216 352H248L296 160H264L232 304L200 160H168Z" fill="white"/>
+  <!-- F letter -->
+  <path d="M320 160H416V192H352V240H400V272H352V352H320V160Z" fill="white"/>
+</svg>

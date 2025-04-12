@@ -7,8 +7,8 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 bg-gray-900/90 backdrop-blur-sm z-50 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="relative w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">2</span>
+            <div className="relative w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+              <span className="text-white font-bold text-lg">VF</span>
             </div>
             <span className="font-bold text-xl text-white">VeriFact</span>
           </Link>
@@ -187,8 +187,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="relative w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">2</span>
+                <div className="relative w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">VF</span>
                 </div>
                 <span className="font-bold text-xl text-white">VeriFact</span>
               </div>

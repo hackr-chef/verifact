@@ -1,9 +1,7 @@
 "use client"
 
-import Image from "next/image";
 import Link from "next/link";
 // import { useState } from "react";
-import SignOutButton from "@/components/auth/sign-out-button";
 
 export default function ResultsPage() {
   return (
@@ -12,7 +10,9 @@ export default function ResultsPage() {
       <aside className="w-64 bg-white border-r hidden md:block">
         <div className="p-4 border-b">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.svg" alt="VeriFact" width={24} height={24} />
+            <div className="relative w-6 h-6 bg-blue-500 rounded-md flex items-center justify-center">
+              <span className="text-white font-bold text-xs">VF</span>
+            </div>
             <span className="font-bold text-lg">VeriFact</span>
           </Link>
         </div>
@@ -52,7 +52,12 @@ export default function ResultsPage() {
             </li>
             <li className="mt-6">
               <div className="p-2">
-                <SignOutButton className="flex items-center space-x-2 w-full text-gray-600 hover:text-gray-900" />
+                <button className="flex items-center space-x-2 w-full text-gray-600 hover:text-gray-900">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H3zm11 3a1 1 0 10-2 0v6.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L14 12.586V6z" clipRule="evenodd" />
+                  </svg>
+                  <span>Sign out</span>
+                </button>
               </div>
             </li>
           </ul>
@@ -63,7 +68,9 @@ export default function ResultsPage() {
       <div className="md:hidden fixed top-0 left-0 right-0 bg-white border-b z-10">
         <div className="flex items-center justify-between p-4">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.svg" alt="VeriFact" width={24} height={24} />
+            <div className="relative w-6 h-6 bg-blue-500 rounded-md flex items-center justify-center">
+              <span className="text-white font-bold text-xs">VF</span>
+            </div>
             <span className="font-bold text-lg">VeriFact</span>
           </Link>
           <button className="p-2 rounded-md text-gray-600 hover:bg-gray-100">

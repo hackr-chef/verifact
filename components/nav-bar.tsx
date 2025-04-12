@@ -13,8 +13,8 @@ export default function NavBar() {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="relative w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">2</span>
+                <div className="relative w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">VF</span>
                 </div>
                 <span className="text-2xl font-bold">
                   <span className="text-blue-400">Veri</span>

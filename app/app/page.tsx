@@ -1,12 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TextInputForm from '../../components/text-input-form';
 import FactCheckResults from '../../components/fact-check-results';
+import { trackPageView, trackFactCheck, trackFeatureUsage } from '@/lib/analytics';
 
 export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<any>(null);
+
+  // Track page view when component mounts
+  useEffect(() => {
+    trackPageView('app_dashboard');
+  }, []);
 
   // Function to extract text from uploaded files
   const extractTextFromFile = async (file: File): Promise<string> => {
@@ -26,11 +32,20 @@ export default function Dashboard() {
   const handleSubmit = async (text: string, file: File | null) => {
     setIsLoading(true);
 
+    // Track fact check started
+    const startTime = Date.now();
+    trackFactCheck('started', {
+      textLength: text.length,
+      apiUsed: 'serper',
+      hasFile: !!file
+    });
+
     try {
       let textToCheck = text;
 
       // If a file was uploaded, extract its text content
       if (file) {
+        trackFeatureUsage('file_upload', true);
         const fileContent = await extractTextFromFile(file);
         textToCheck += `\n\n${fileContent}`;
       }
@@ -52,6 +67,16 @@ export default function Dashboard() {
       const data = await response.json();
       console.log('Fact-checking completed successfully');
       setResults(data);
+
+      // Track fact check completed
+      const processingTime = Date.now() - startTime;
+      trackFactCheck('completed', {
+        textLength: textToCheck.length,
+        apiUsed: 'serper',
+        processingTime,
+        hasFile: !!file,
+        factCount: data.factCheckResults?.length || 0
+      });
     } catch (error) {
       console.error('Error during fact checking:', error);
 
@@ -64,6 +89,14 @@ export default function Dashboard() {
         error: true
       });
 
+      // Track fact check error
+      trackFactCheck('error', {
+        textLength: text.length,
+        apiUsed: 'serper',
+        hasFile: !!file,
+        errorMessage: error instanceof Error ? error.message : 'Unknown error'
+      });
+
       alert(`Error: ${error instanceof Error ? error.message : 'An unknown error occurred'}`);
     } finally {
       setIsLoading(false);
@@ -73,6 +106,7 @@ export default function Dashboard() {
   const handleRewrite = () => {
     // This would typically call an AI service to rewrite the text
     // For now, we'll just reset to the input form
+    trackFeatureUsage('rewrite_request');
     setResults(null);
   };
 
@@ -91,6 +125,9 @@ export default function Dashboard() {
       <header className="bg-gray-900 shadow-sm border-b border-gray-800">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold flex items-center">
+            <div className="relative w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center mr-2">
+              <span className="text-white font-bold text-lg">VF</span>
+            </div>
             <span style={{ color: colors.primary }}>Veri</span>
             <span className="text-white">Fact</span>
             <span className="ml-2 px-2 py-1 text-xs rounded-full"

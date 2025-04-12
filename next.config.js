@@ -19,7 +19,16 @@ const nextConfig = {
     // This is to suppress the punycode deprecation warning
     config.ignoreWarnings = [
       { module: /node_modules\/punycode/ },
+      { message: /\[DEP0040\]/ }, // Ignore the specific deprecation warning code
     ];
+
+    // Add a fallback for the punycode module
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        punycode: false,
+      };
+    }
 
     return config;
   },

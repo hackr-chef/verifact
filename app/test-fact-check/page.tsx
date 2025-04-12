@@ -1,15 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { trackPageView, trackFactCheck } from '@/lib/analytics';
 
 export default function TestFactCheck() {
   const [input, setInput] = useState('USA is a continent');
   const [results, setResults] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+
+  // Track page view when component mounts
+  useEffect(() => {
+    trackPageView('test_fact_check');
+  }, []);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setResults(null);
+
+    // Track fact check started
+    const startTime = Date.now();
+    trackFactCheck('started', { textLength: input.length, apiUsed: 'serper' });
 
     try {
       const endpoint = '/api/fact-check-serper';
@@ -23,9 +33,24 @@ export default function TestFactCheck() {
 
       const data = await response.json();
       setResults(data);
+
+      // Track fact check completed
+      const processingTime = Date.now() - startTime;
+      trackFactCheck('completed', {
+        textLength: input.length,
+        apiUsed: 'serper',
+        processingTime
+      });
     } catch (error) {
       console.error('Error:', error);
       alert('An error occurred while checking facts.');
+
+      // Track fact check error
+      trackFactCheck('error', {
+        textLength: input.length,
+        apiUsed: 'serper',
+        errorMessage: error instanceof Error ? error.message : 'Unknown error'
+      });
     } finally {
       setLoading(false);
     }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="24" fill="#3B82F6"/>
+  <!-- Using paths instead of text for better compatibility -->
+  <!-- V letter -->
+  <path d="M63 60L81 132H93L111 60H99L87 114L75 60H63Z" fill="white"/>
+  <!-- F letter -->
+  <path d="M120 60H156V72H132V90H150V102H132V132H120V60Z" fill="white"/>
+</svg>

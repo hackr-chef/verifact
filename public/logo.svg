@@ -1,1 +1,9 @@
-[Add your logo SVG file here]
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="4" fill="#3B82F6"/>
+  <!-- Using paths instead of text for better compatibility -->
+  <!-- V letter -->
+  <path d="M10.5 10L13.5 22H15.5L18.5 10H16.5L14.5 19L12.5 10H10.5Z" fill="white"/>
+  <!-- F letter -->
+  <path d="M20 10H26V12H22V15H25V17H22V22H20V10Z" fill="white"/>
+</svg>
