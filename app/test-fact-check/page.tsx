@@ -6,15 +6,13 @@ export default function TestFactCheck() {
   const [input, setInput] = useState('USA is a continent');
   const [results, setResults] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-  const [selectedApi, setSelectedApi] = useState('serper');
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setResults(null);
 
     try {
-      const endpoint = `/api/fact-check-${selectedApi}`;
+      const endpoint = '/api/fact-check-serper';
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -40,20 +38,10 @@ export default function TestFactCheck() {
 
         <form onSubmit={handleSubmit} className="mb-8">
           <div className="mb-4">
-            <label htmlFor="api" className="block text-sm font-medium text-gray-700 mb-1">
-              Select API
-            </label>
-            <select
-              id="api"
-              value={selectedApi}
-              onChange={(e) => setSelectedApi(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md"
-            >
-              <option value="serper">Serper Search API (Real-time)</option>
-              <option value="gemini">Gemini API</option>
-              <option value="bing">Bing API</option>
-              <option value="google">Google API</option>
-            </select>
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-700">Using Serper Search API</span>
+            </div>
           </div>
 
           <div className="mb-4">

@@ -23,6 +23,14 @@ const nextConfig = {
 
     return config;
   },
+  // Environment variables available during build
+  env: {
+    // Add fallback values for build time
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder-supabase-url.supabase.co',
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-anon-key',
+  },
+  // Static page generation options
+  staticPageGenerationTimeout: 120, // Increase timeout for static page generation
 };
 
 module.exports = nextConfig;
